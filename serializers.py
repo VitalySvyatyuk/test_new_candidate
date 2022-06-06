@@ -1,6 +1,14 @@
 from rest_framework import serializers
 
-from .models import EmailSending
+from .models import MonestroUser, EmailSending
+
+
+class MonestroUserSerializer(serializers.ModelSerializer):
+    sendings = serializers.IntegerField()
+
+    class Meta:
+        model = MonestroUser
+        fields = ('first_name', 'last_name', 'email', 'sendings')
 
 
 class EmailSendingSerializer(serializers.ModelSerializer):

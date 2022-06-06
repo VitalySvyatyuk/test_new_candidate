@@ -5,7 +5,10 @@ from django.db import models
 
 
 class MonestroUser(AbstractUser):
-    pass
+    
+    @property
+    def sendings(self):
+        return self.sendings.count()
 
 
 class EmailSending(models.Model):
@@ -13,3 +16,4 @@ class EmailSending(models.Model):
     recipient = models.EmailField()
     referral_link = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True, editable=False, db_index=True)
+    user = models.ForeignKey(MonestroUser, on_delete=models.CASCADE, related_name='sendings')
