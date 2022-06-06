@@ -42,7 +42,7 @@ def repeat_invite():
                 subject='Invitation to Monestro',
                 from_email='Monestro <info@monestro.com>',
                 message='',
-                recipient_list=[sending.recipient, ],
+                recipients=[sending.recipient, ],
                 html_message=html_message,
                 fail_silently=False,
             )
